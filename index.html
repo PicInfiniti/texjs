@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A Note on Union-closed sets conjecture</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <script type="module" src="./main.js"></script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+  <article>
+
+    <page>
+      <subpage>
+        <header class="title">
+          <h2 des="title">$\text{A Note on the Union-closed Sets Conjecture}$</h2><br>
+          <author>
+            $\text{Mohammad Javad Moghaddas Mehr}$
+          </author>
+          <div des="mail-date">
+            <a href="mailto:m.moghadas11235@gmail.com">Email: m.moghadas11235@gmail.com</a><br>
+            <span>
+              September 4, 2023
+            </span>
+          </div>
+        </header>
+
+        <abstract>
+          <span>Abstract</span>
+          <p class="p">
+            Let $M=(m_{ij})$ be a binary matrix of size $n \times m$ with distinct rows where its rows are closed
+            under logical operators. In this article,
+            we
+            explore whether, in each
+            case, there exists a column that has an equal or greater number of ones than zeros.
+          </p>
+
+        </abstract>
+        <keywords>
+          <strong>Keywords: </strong> union-closed sets conjecture, binary matrix, logical operators, material
+          conditional<br>
+        </keywords>
+
+        <section class="margintop50">
+          <header>
+            <h3>Introduction</h3>
+          </header>
+
+          <p class="p">For an integer, $n \in \mathbb{N},$ we define the set $[n]$ as $\{k \in \mathbb{N} \, | \, k \leq
+            n\}.$ A family $\mathscr{F} \subseteq 2^{[n]}$ is called union-closed if $\mathcal{A}, \mathcal{B} \in
+            \mathscr{F}$ implies that $\mathcal{A} \cup \mathcal{B} \in \mathscr{F}.$ In
+            1979, Péter Frankl <cite>[1]</cite> posed a seemingly straightforward conjecture that, over four decades
+            later, still stands as an unsolved puzzle despite substantial efforts and progress dedicated to its
+            understanding. The conjecture states as follows.
+          </p>
+          <conjecture>
+            <p>
+              <strong>Conjecture</strong> For every non-empty finite union-closed family of sets, there
+              exists an element that belongs to at least half of the sets in the family.
+            </p>
+          </conjecture>
+
+          <p class="p margintop30">Efforts to understand the conjecture have led to notable breakthroughs. We recommend
+            the survey paper by Bruhn and Schaudt <cite>[2]</cite> for details. Vuckovic and Zivkovic
+            <cite>[3]</cite>
+            demonstrated the conjecture's validity for any union-closed family $\mathscr{F} \subseteq 2^{[n]}$ where $n
+            \leq 12.$
+            Roberts and Simpson <cite>[4]</cite> established that if $q$ is the minimum cardinality of $\bigcup
+            \mathscr{F}$ taken over
+            all
+            counterexamples $\mathscr{F},$ then any counterexample $\mathscr{F}$ has cardinality at least $4q - 1.$</p>
+
+
+        </section>
+
+
+      </subpage>
+
+    </page>
+
+    <page>
+      <subpage>
+        <section>
+          <example>
+            <p>
+              <strong>Example</strong>
+              Let $\mathscr{A}$ be a family of sets as follows
+
+              $$
+              \mathscr{A}=\{\displaystyle \varnothing ,\{1\},\{1,2\},\{2,3,4\},\{1,2,3,4\}\}
+              $$
+
+              which is union-closed. The matrix representation of $\mathscr{A}$ will be
+              $$
+              A = \begin{pmatrix}
+              0 & 0 & 0 & 0\\
+              1 & 0 & 0 & 0\\
+              1 & 1 & 0 & 0\\
+              0 & 1 & 1 & 1\\
+              1 & 1 & 1 & 1
+              \end{pmatrix}
+              $$
+
+              then $\psi(A) = \{2,3\},$ so $max(\psi(A)) \geq 5/2.$
+
+              Thus the $\text{Conjecture 1.3}$ holds in this case.
+            </p>
+
+          </example>
+
+          <p class="p margintop30">
+            If $\text{Conjecture 1.3}$ holds for matrix $A,$ then any row and column permutation of $A$ also satisfies
+            the
+            $\text{Conjecture's}$ conditions.
+          </p>
+
+
+
+
+          <definition>
+            <p>
+              <strong>Definition</strong> Matrix $A$ is equivalent to matrix $B,$
+              denoted as $A \sim B,$ if $B$ can be obtained from $A$ through row and column permutations.
+            </p>
+          </definition>
+
+
+          <p class="p margintop30">
+            We refer to the pair $(M,*)$ as a
+            $space,$ where $M = (m_{ij})$ is a non-zero binary matrix of size ${n \times m},$ such that its rows are
+            closed
+            under
+            "*" operator. This operator can be either binary or unary.
+          </p>
+
+        </section>
+
+
+        <section>
+          <header>
+            <h3>$\textbf{Negation } (\boldsymbol{\neg})$</h3>
+          </header>
+          <p class="p">
+            In this section, we will prove our first lemma, which serves as a useful tool and provides valuable insights
+            for dealing with other cases.
+
+          </p>
+          <lemma>
+            <p>
+              <strong>Negation Lemma</strong> For every space $(M_{n \times m},\neg)$ we have $max(\psi(M))
+              \geq n/2.$
+            </p>
+
+          </lemma>
+          <proof>
+            <p>
+              <span>$Proof.$ </span> Without loss of generality, assume that $M_{-j} \neq 0$ for each $j \in [m].$
+              Define two sets $\mathcal{K}$
+              and $\mathcal{L}$ as follows
+
+              $$
+              \mathcal{K} := \{M_{i-} \,|\, m_{i1}=1\} \\
+              \mathcal{L} := \{M_{i-} \,|\, m_{i1}=0\}.
+              $$
+
+              If $\mathcal{L} = \varnothing$ there is nothing to prove, so let $\mathcal{L} \neq \varnothing.$
+              Define matrix $K$ such that its rows come from $\mathcal{K}$ while preserving their order in $M.$
+            </p>
+
+          </proof>
+
+
+        </section>
+
+
+      </subpage>
+
+    </page>
+  </article>
+
+</body>
+
+</html>
