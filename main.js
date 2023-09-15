@@ -6,9 +6,9 @@ let material = ['example', 'definition', 'theorem', 'lemma', 'proposition', 'cor
 
 // add page number
 let counter = 1
-let $subpage = $('subpage')
-for (let i of $('subpage')) {
-  $(i).after(`<footer>${counter++} of ${$subpage.length}</footer>`)
+let $page = $('page')
+for (let i of $('page')) {
+  $(i).after(`<footer>${counter++} of ${$page.length}</footer>`)
 }
 
 

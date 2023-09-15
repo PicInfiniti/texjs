@@ -58,8 +58,8 @@ cite
   margin-bottom: 100px
 // ------------------------
 // new elements------------------------------------
-// page setup
-page 
+// paper setup
+paper 
   display: block
   width: 210mm
   height: 297mm
@@ -72,7 +72,7 @@ page
   border: 0px solid rgb(7, 68, 9)
 
 
-subpage
+page
   display: block
   border: 0px red solid
   height: 277mm
@@ -82,7 +82,7 @@ subpage
   // background-image: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(249, 255, 172) 100%), linear-gradient(to bottom, rgb(255, 143, 143) 0%, rgb(255, 79, 79) 100%)
   // background-clip: content-box, padding-box
 
-@page 
+@paper 
   size: A4
   margin: 0
 
@@ -94,7 +94,7 @@ subpage
     height: 297mm
     -webkit-print-color-adjust: exact !important
 
-  page 
+  paper 
     display: block
     margin: 0
     border: initial
