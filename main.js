@@ -2,7 +2,7 @@ import $ from "jquery"
 import './style.sass'
 
 // define custom tag
-let material = ['example', 'definition', 'theorem', 'lemma', 'proposition', 'corollary', 'conjecture', 'remark']
+let material = ['definition', 'theorem', 'lemma', 'proposition', 'corollary', 'conjecture', 'remark', 'claim']
 
 // add page number
 let counter = 1
@@ -43,31 +43,6 @@ for (let i of $('section')) {
 
 
 // numbering of materials
-counter = 1;
-
-$('section').each(function (_, section) {
-  const $section = $(section);
-  const hasHeader = $section.find('header').length > 0;
-
-  if (hasHeader) {
-    counter = 1;
-  }
-
-  $section.find('*').each(function (_, tag) {
-    const $tag = $(tag);
-    const tagName = tag.tagName.toLowerCase();
-
-    if (material.includes(tagName) && $tag.find('strong').length > 0) {
-      const sectionNumber = $tag.closest('section').attr('des').slice(1);
-      $tag.attr('id', `${tagName[0]}${sectionNumber}.${counter}`);
-      $tag.find('strong').append(` ${sectionNumber}.${counter++}.&nbsp;&nbsp;`);
-    }
-  });
-});
-
-
-
-// numbering of materials with headers
 // counter = 1;
 
 // $('section').each(function (_, section) {
@@ -82,15 +57,45 @@ $('section').each(function (_, section) {
 //     const $tag = $(tag);
 //     const tagName = tag.tagName.toLowerCase();
 
-//     if (material.includes(tagName)) {
+//     if (material.includes(tagName) && $tag.find('strong').length > 0) {
 //       const sectionNumber = $tag.closest('section').attr('des').slice(1);
 //       $tag.attr('id', `${tagName[0]}${sectionNumber}.${counter}`);
-//       $tag.find('p:first').prepend(`<strong>${capitalizeFirstLetter(tagName)} ${sectionNumber}.${counter++}</strong>.&nbsp;&nbsp;`);
+//       $tag.find('strong').append(` ${sectionNumber}.${counter++}.&nbsp;&nbsp;`);
 //     }
 //   });
 // });
 
-// // util function
-// function capitalizeFirstLetter(text) {
-//   return text.charAt(0).toUpperCase() + text.slice(1);
-// }
+
+// add material headers and numbers
+counter = 1;
+$('section').each(function (_, section) {
+  console.log(90)
+  const $section = $(section);
+  const hasHeader = $section.find('header').length > 0;
+
+  if (hasHeader) {
+    counter = 1;
+  }
+
+  $section.find('*').each(function (_, tag) {
+    const $tag = $(tag);
+    const tagName = tag.tagName.toLowerCase();
+
+    if($tag.attr('dcr')!='no'){
+      if (material.includes(tagName)) {
+        const sectionNumber = $tag.closest('section').attr('des').slice(1);
+        $tag.attr('id', `${tagName[0]}${sectionNumber}.${counter}`);
+        if($tag.attr('name')){
+          $tag.find('p:first').prepend(`<strong>${capitalizeFirstLetter($tag.attr('name'))} ${sectionNumber}.${counter++}</strong>.&nbsp;&nbsp;`);
+        } else {
+          $tag.find('p:first').prepend(`<strong>${capitalizeFirstLetter(tagName)} ${sectionNumber}.${counter++}</strong>.&nbsp;&nbsp;`);
+        }
+      }
+    }
+  });
+});
+
+// util function
+function capitalizeFirstLetter(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
